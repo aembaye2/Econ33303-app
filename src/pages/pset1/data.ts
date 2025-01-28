@@ -33,8 +33,7 @@ export const quiz = {
     },
     {
       qtype: "float-num-quest",
-      question:
-        "Consider the market for cars with demand 𝑄𝐷=1000-10𝑃 and supply equal to 𝑄𝑆=10 + 5𝑃, the value of the consumer surplus is (answer in two decimal place):",
+      question: "Enter 100.00 below:",
       Ref: "",
     },
     {
@@ -46,14 +45,18 @@ export const quiz = {
 
     {
       qtype: "float-num-quest",
-      question:
-        "Consider the market for cars with demand 𝑄𝐷=1000-10𝑃 and supply equal to 𝑄𝑆=10 + 5𝑃, the value of the consumer surplus is (answer in two decimal place):",
+      question: "Enter 100.00 below:",
       Ref: "",
     },
     {
       qtype: "graphing-quest",
       question:
         "Again, starting from the initial optimal point of this family as e1, suppose the price of having kids becomes cheaper, other things equal. Show the shift in the budget constraint and the possible point of family's new optimal point e2. And show the substitution and income effects of this decrease in price of having kids still assuming that kids are inferior goods.",
+      Ref: "",
+    },
+    {
+      qtype: "float-num-quest",
+      question: "Enter 100.00 below:",
       Ref: "",
     },
     {
@@ -64,8 +67,7 @@ export const quiz = {
     },
     {
       qtype: "float-num-quest",
-      question:
-        "Consider the market for cars with demand 𝑄𝐷=1000-10𝑃 and supply equal to 𝑄𝑆=10 + 5𝑃, the value of the consumer surplus is (answer in two decimal place):",
+      question: "Enter 100.00 below:",
       Ref: "",
     },
     {
@@ -76,8 +78,7 @@ export const quiz = {
     },
     {
       qtype: "float-num-quest",
-      question:
-        "Consider the market for cars with demand 𝑄𝐷=1000-10𝑃 and supply equal to 𝑄𝑆=10 + 5𝑃, the value of the consumer surplus is (answer in two decimal place):",
+      question: "Enter 100.00 below:",
       Ref: "",
     },
     {
