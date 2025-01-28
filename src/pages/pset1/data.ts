@@ -62,7 +62,7 @@ export const quiz = {
     {
       qtype: "graphing-quest",
       question:
-        "Labor Supply Question: The initial optimal point e1 of a consumer-worker in consumption (C$-leisure (l) space (leisure on the x-axis) is given below. Show the effect of an increase of passive (virtual) income YV, such as investment income from stocks on the budget constraint if leisure is a normal good.",
+        "Labor Supply Question: The initial optimal point e1 of a consumer-worker in consumption (C)-leisure (l) space (leisure on the x-axis) is given below. Show the effect of an increase of passive (virtual) income YV (such as investment income from stocks) on the budget constraint if leisure is a normal good.",
       Ref: "",
     },
     {
