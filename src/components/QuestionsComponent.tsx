@@ -84,6 +84,7 @@ const QuestionsComponent = ({ questions, userId, quizName }: QuizProps) => {
 
   const handleNext = async () => {
     //console.log("currentState of canvas located in Qcomp.tsx : ", currentState) // this a state define here but fetched from store
+    localStorage.setItem("userAnswers", JSON.stringify(userAnswers))
 
     if (questions[currentQuestionIndex].qtype === "graphing-quest") {
       await saveCanvasImage2storage(currentQuestionIndex) //calling the function here
@@ -93,39 +94,37 @@ const QuestionsComponent = ({ questions, userId, quizName }: QuizProps) => {
     if (currentQuestionIndex !== questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1)
     } else {
-      // Save the userAnswers to localStorage
-      localStorage.setItem("userAnswers", JSON.stringify(userAnswers))
       setShowResults(true)
 
-      const apiRoute = quizName ? `/api/${quizName}Results` : null
+      // const apiRoute = quizName ? `/api/${quizName}Results` : null
 
-      if (!apiRoute) {
-        throw new Error("Quiz name is required to determine the API route.")
-      }
+      // if (!apiRoute) {
+      //   throw new Error("Quiz name is required to determine the API route.")
+      // }
 
-      fetch(apiRoute, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          userId: userId,
-          userAnswers: userAnswers,
-          quizName: quizName,
-        }),
-      })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Network response was not working.")
-          }
-          return response.json()
-        })
-        .then((data) => {
-          console.log("Quiz results saved successfully:", data)
-        })
-        .catch((error) => {
-          console.error("Error saving quiz results:", error)
-        })
+      // fetch(apiRoute, {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify({
+      //     userId: userId,
+      //     userAnswers: userAnswers,
+      //     quizName: quizName,
+      //   }),
+      // })
+      //   .then((response) => {
+      //     if (!response.ok) {
+      //       throw new Error("Network response was not working.")
+      //     }
+      //     return response.json()
+      //   })
+      //   .then((data) => {
+      //     console.log("Quiz results saved successfully:", data)
+      //   })
+      //   .catch((error) => {
+      //     console.error("Error saving quiz results:", error)
+      //   })
     }
   }
 
@@ -133,6 +132,10 @@ const QuestionsComponent = ({ questions, userId, quizName }: QuizProps) => {
     if (currentQuestionIndex > 0) {
       setCurrentQuestionIndex(currentQuestionIndex - 1)
     }
+  }
+
+  const startquiz = () => {
+    setCurrentQuestionIndex(1)
   }
 
   return (
@@ -343,7 +346,7 @@ const QuestionsComponent = ({ questions, userId, quizName }: QuizProps) => {
               <div style={{ marginTop: "20px" }}>
                 <button
                   onClick={() => window.location.reload()}
-                  className="p-1 rounded-md bg-dark text-white text-center text-1xl mt-10"
+                  // className="p-1 rounded-md bg-dark text-white text-center text-1xl mt-10"
                 >
                   Restart Assessement →
                 </button>

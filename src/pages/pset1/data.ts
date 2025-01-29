@@ -32,20 +32,9 @@ export const quiz = {
       Ref: "",
     },
     {
-      qtype: "float-num-quest",
-      question: "Enter 100.00 below:",
-      Ref: "",
-    },
-    {
       qtype: "graphing-quest",
       question:
         "Now draw an the initial optimal point of this family as e1 with appropriate budget constraint and possible indifference curve. Now assuming that kids are inferior goods/services, show the new optimal point as e2 if the income of the family increases.",
-      Ref: "",
-    },
-
-    {
-      qtype: "float-num-quest",
-      question: "Enter 100.00 below:",
       Ref: "",
     },
     {
@@ -54,33 +43,21 @@ export const quiz = {
         "Again, starting from the initial optimal point of this family as e1, suppose the price of having kids becomes cheaper, other things equal. Show the shift in the budget constraint and the possible point of family's new optimal point e2. And show the substitution and income effects of this decrease in price of having kids still assuming that kids are inferior goods.",
       Ref: "",
     },
-    {
-      qtype: "float-num-quest",
-      question: "Enter 100.00 below:",
-      Ref: "",
-    },
+
     {
       qtype: "graphing-quest",
       question:
         "Labor Supply Question: The initial optimal point e1 of a consumer-worker in consumption (C)-leisure (l) space (leisure on the x-axis) is given below. Show the effect of an increase of passive (virtual) income YV (such as investment income from stocks) on the budget constraint if leisure is a normal good.",
       Ref: "",
     },
-    {
-      qtype: "float-num-quest",
-      question: "Enter 100.00 below:",
-      Ref: "",
-    },
+
     {
       qtype: "graphing-quest",
       question:
         "Show the effect of decrease in wage rate in which the worker supplies more hours in the labor market (leisure is still normal good).",
       Ref: "",
     },
-    {
-      qtype: "float-num-quest",
-      question: "Enter 100.00 below:",
-      Ref: "",
-    },
+
     {
       qtype: "graphing-quest",
       question:
