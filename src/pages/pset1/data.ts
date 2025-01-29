@@ -64,5 +64,11 @@ export const quiz = {
         "Show substitution and income effects of this person graphically by decomposing the total effect in from the previous question.",
       Ref: "",
     },
+    {
+      qtype: "float-num-quest",
+      question:
+        "... Continuing from previous question, the value of the producer surplus is",
+      Ref: "",
+    },
   ],
 }

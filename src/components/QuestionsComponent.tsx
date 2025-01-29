@@ -17,6 +17,20 @@ interface QuizProps {
 }
 
 const QuestionsComponent = ({ questions, userId, quizName }: QuizProps) => {
+  const [storageSize, setStorageSize] = useState<number | null>(null)
+  // Function to calculate the size of data stored in localStorage
+  const getLocalStorageSize = () => {
+    let totalSize = 0
+    for (let key in localStorage) {
+      if (localStorage.hasOwnProperty(key)) {
+        const item = localStorage.getItem(key)
+        if (item) {
+          totalSize += (item.length + key.length) * 2 // Size in bytes
+        }
+      }
+    }
+    setStorageSize(totalSize) // Update state with the calculated size
+  }
   //const [userAnswers, setUserAnswers] = useState<{    [key: number]: string | number;   }>({});
   const [userAnswers, setUserAnswers] = useState<{
     [key: number]: string | number
@@ -187,6 +201,15 @@ const QuestionsComponent = ({ questions, userId, quizName }: QuizProps) => {
                     : "Download PDF File"}
                 </button>
               </div>
+              {/* Local starage  */}
+              {/* <div>
+                <button onClick={getLocalStorageSize}>
+                  Check LocalStorage Size
+                </button>
+                {storageSize !== null && (
+                  <p>Total localStorage size: {storageSize} bytes</p>
+                )}
+              </div> */}
               {/* Displaying only the current question */}
               <div style={{ marginBottom: "20px" }}>
                 <div style={{ marginBottom: "20px" }}>
