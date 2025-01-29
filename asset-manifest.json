@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Econ33303-app/static/css/main.046caf2e.chunk.css",
-    "main.js": "/Econ33303-app/static/js/main.c4224107.chunk.js",
-    "main.js.map": "/Econ33303-app/static/js/main.c4224107.chunk.js.map",
+    "main.js": "/Econ33303-app/static/js/main.2efc9ff4.chunk.js",
+    "main.js.map": "/Econ33303-app/static/js/main.2efc9ff4.chunk.js.map",
     "runtime-main.js": "/Econ33303-app/static/js/runtime-main.4a14c1b5.js",
     "runtime-main.js.map": "/Econ33303-app/static/js/runtime-main.4a14c1b5.js.map",
     "static/js/2.0da98e02.chunk.js": "/Econ33303-app/static/js/2.0da98e02.chunk.js",
@@ -14,7 +14,7 @@
     "static/js/5.739eb4ae.chunk.js": "/Econ33303-app/static/js/5.739eb4ae.chunk.js",
     "static/js/5.739eb4ae.chunk.js.map": "/Econ33303-app/static/js/5.739eb4ae.chunk.js.map",
     "index.html": "/Econ33303-app/index.html",
-    "precache-manifest.55fa1c347b7f29b834fdb7a8e53fa637.js": "/Econ33303-app/precache-manifest.55fa1c347b7f29b834fdb7a8e53fa637.js",
+    "precache-manifest.789bbe9b39cd1c9bc7627624aad9fe78.js": "/Econ33303-app/precache-manifest.789bbe9b39cd1c9bc7627624aad9fe78.js",
     "service-worker.js": "/Econ33303-app/service-worker.js",
     "static/css/main.046caf2e.chunk.css.map": "/Econ33303-app/static/css/main.046caf2e.chunk.css.map",
     "static/js/2.0da98e02.chunk.js.LICENSE.txt": "/Econ33303-app/static/js/2.0da98e02.chunk.js.LICENSE.txt",
@@ -26,6 +26,6 @@
     "static/js/runtime-main.4a14c1b5.js",
     "static/js/3.42d73102.chunk.js",
     "static/css/main.046caf2e.chunk.css",
-    "static/js/main.c4224107.chunk.js"
+    "static/js/main.2efc9ff4.chunk.js"
   ]
 }
