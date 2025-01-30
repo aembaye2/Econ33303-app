@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import DrawingApp from "./canvas/DrawingApp"
 //import { handleJsonSave, handleGeneratePDF } from "./utils";
 import { handleGeneratePDF } from "./utils"
+import { quiz } from "../pages/pset1/data"
 //import { fabric } from "fabric";
 //import { useCanvasStore } from "./canvas/useCanvasStore"
 
@@ -193,7 +194,13 @@ const QuestionsComponent = ({ questions, userId, quizName }: QuizProps) => {
                 <button
                   type="button"
                   onClick={(e) =>
-                    handleGeneratePDF(e, questions, userAnswers, fullname)
+                    handleGeneratePDF(
+                      e,
+                      questions,
+                      userAnswers,
+                      fullname,
+                      quizName
+                    )
                   }
                 >
                   {currentQuestionIndex === questions.length - 1
@@ -216,13 +223,26 @@ const QuestionsComponent = ({ questions, userId, quizName }: QuizProps) => {
                   {questions &&
                     questions.length > 0 &&
                     currentQuestionIndex >= 0 &&
-                    currentQuestionIndex < questions.length && (
-                      <label>
-                        {currentQuestionIndex + 1}.{" "}
-                        {questions[currentQuestionIndex].question}
-                      </label>
+                    questions[currentQuestionIndex].Ref && (
+                      <img
+                        src={
+                          process.env.PUBLIC_URL +
+                          "/" +
+                          questions[currentQuestionIndex].Ref
+                        }
+                        alt="Question Reference"
+                        style={{ maxWidth: "50%", marginTop: "10px" }}
+                      />
                     )}
+                  <br></br>{" "}
+                  {currentQuestionIndex < questions.length && (
+                    <label>
+                      {currentQuestionIndex + 1}.{" "}
+                      {questions[currentQuestionIndex].question}
+                    </label>
+                  )}
                 </div>
+
                 {/* Render question types based on the `qtype` */}
                 {questions[currentQuestionIndex].qtype === "mc-quest" && (
                   <div>

@@ -7,7 +7,8 @@ export const handleGeneratePDF = async (
   e,
   questions,
   userAnswers,
-  fullname
+  fullname,
+  quizName
 ) => {
   e.preventDefault()
 
@@ -24,18 +25,25 @@ export const handleGeneratePDF = async (
           .question { margin-bottom: 20px; }
           .answer { margin-top: 10px; white-space: pre-wrap; }
           .manylines-text-quest { height: 200px; overflow: hidden; }
-          .graphing-quest { margin-top: 10px; }
-          .graphing-quest img { width: 150px; height: 150px; } /* Adjust the size of the embedded graph */
+          .graphing-quest { margin-top: 5px; }
+          .graphing-quest img { width: 300px; height: 200px; } /* Adjust the size of the embedded graph */
         </style>
       </head>
       <body>
-        <h1>Full Name: ${fullname}</h1>
+      <h1 style="text-align: center;">Your Report for ${quizName}</h1>
+        <h2>Full Name: ${fullname}</h2>
   `
 
   userInputData.forEach((question, index) => {
     htmlContent += `
       <div class="question">
-        <p>${index + 1}. ${question.question}</p>
+      ${
+        question.Ref
+          ? `<img src="${process.env.PUBLIC_URL}/${question.Ref}" alt="Question Reference" style="max-width: 50%; margin-top: 10px;" />`
+          : ""
+      } <br>
+        <p>${index + 1}. ${question.question}</p> 
+        
     `
 
     if (question.qtype === "mc-quest") {

@@ -23,7 +23,7 @@ const Pset1 = () => {
   //const questions = quiz.questions // Get questions from the imported quiz data, is a
   const questions = quiz.questions.filter((q) => q !== undefined) // Filter out undefined elementslist
   const userId = user?.data.user.id
-  const isAvailable = false
+  const isAvailable = true //false
   if (!isAvailable) {
     return (
       <div className="container">

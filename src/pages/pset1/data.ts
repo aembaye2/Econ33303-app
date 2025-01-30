@@ -22,7 +22,7 @@ export const quiz = {
     {
       qtype: "float-num-quest",
       question:
-        "... Continuing from previous question, now the government forces the producer to charge only $50 and supply a quantity that consumers demand at this price. If the producer comply, the value of deadweight loss of over production is:",
+        "... Continuing from previous question, now the government forces the producer to charge only $50 and supply a quantity that consumers demand at this price. If the producer comply, the value of deadweight loss of over production is: <br><br><br><br><br><br><br><br><br>",
       Ref: "",
     },
     {
@@ -34,7 +34,7 @@ export const quiz = {
     {
       qtype: "graphing-quest",
       question:
-        "Now draw an the initial optimal point of this family as e1 with appropriate budget constraint and possible indifference curve. Now assuming that kids are inferior goods/services, show the new optimal point as e2 if the income of the family increases.",
+        "Now draw an the initial optimal point of this family as e1 with appropriate budget constraint and indifference curve. Now assuming that kids are inferior goods/services, show the new optimal point as e2 if the income of the family increases.",
       Ref: "",
     },
     {
@@ -47,14 +47,14 @@ export const quiz = {
     {
       qtype: "graphing-quest",
       question:
-        "Labor Supply Question: The initial optimal point e1 of a consumer-worker in consumption (C)-leisure (l) space (leisure on the x-axis) is given below. Show the effect of an increase of passive (virtual) income YV (such as investment income from stocks) on the budget constraint if leisure is a normal good.",
+        "Labor Supply Question: Showing an initial optimal point e1 of a consumer-worker in consumption (C)-leisure (l) space (leisure on the x-axis) given below, show the effect of an increase of passive (virtual) income YV (such as investment income from stocks) on the budget constraint if leisure is a normal good.",
       Ref: "",
     },
 
     {
       qtype: "graphing-quest",
       question:
-        "Show the effect of decrease in wage rate in which the worker supplies more hours in the labor market (leisure is still normal good).",
+        "Starting from an initial optimal point in the consumption-leisure space, show the effect of decrease in wage rate in which the worker supplies more hours in the labor market (leisure is still normal good).",
       Ref: "",
     },
 
@@ -65,9 +65,22 @@ export const quiz = {
       Ref: "",
     },
     {
-      qtype: "float-num-quest",
+      qtype: "mc-quest",
       question:
-        "... Continuing from previous question, the value of the producer surplus is",
+        "(Refer to the above table) According to the estimates , what is the expected impact of a $1000 increase in welfare benefits on the number of hours worked?",
+      options: [
+        "A. The number of hours worked falls by about 15",
+        "B. The number of hours worked falls by about 1,560",
+        "C. The number of hours worked falls by about 183",
+        "D. The number of hours worked falls by about 1,830",
+      ],
+      Ref: "img01.png",
+    },
+
+    {
+      qtype: "one-line-text-quest",
+      question:
+        "From the above table, is the coefficient of TANF benefits statistically significant at the 5% level? why or why not",
       Ref: "",
     },
   ],
