@@ -30,31 +30,31 @@ const DrawingModeSelector: React.FC<DrawingModeSelectorProps> = ({
       icon: Slash, //process.env.PUBLIC_URL + "/undo.png",
       description: "Draw a line",
     },
-    {
-      mode: "singlearrowhead",
-      icon: MoveUpRight,
-      description: "Draw a single arrowhead",
-    },
-    {
-      mode: "doublearrowhead",
-      icon: MoveDiagonal,
-      description: "Draw a double arrowhead",
-    },
+    // {
+    //   mode: "singlearrowhead",
+    //   icon: MoveUpRight,
+    //   description: "Draw a single arrowhead",
+    // },
+    // {
+    //   mode: "doublearrowhead",
+    //   icon: MoveDiagonal,
+    //   description: "Draw a double arrowhead",
+    // },
     { mode: "point", icon: Dot, description: "Draw a point" },
-    { mode: "polygon", icon: Hexagon, description: "Draw a polygon" },
+    // { mode: "polygon", icon: Hexagon, description: "Draw a polygon" },
     // {
     //   mode: "rect",
     //   icon: RectangleHorizontal,
     //   description: "Draw a rectangle",
     // },
     //{ mode: "circle", icon: Circle, description: "Draw a circle" },
-    //{ mode: "freedraw", icon: Pencil, description: "Free draw" },
+    { mode: "freedraw", icon: Pencil, description: "Free draw" },
     {
       mode: "coordinate",
       icon: process.env.PUBLIC_URL + "/coordicon.svg",
       description: "Draw coordinates",
     },
-    { mode: "curve", icon: Spline, description: "Draw a curve" },
+    // { mode: "curve", icon: Spline, description: "Draw a curve" },
 
     { mode: "text", icon: Type, description: "Add text" },
     // {

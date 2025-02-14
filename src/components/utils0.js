@@ -2,56 +2,7 @@
 
 // import { saveAs } from "file-saver"
 // import html2pdf from "html2pdf.js"
-import { fabric } from "fabric"
-import placeholderDrawing from "./placeholderImage"
-
-function createTemporaryCanvasAndConvert() {
-  // Create a temporary canvas element programmatically
-  const canvasElement = document.createElement("canvas")
-  canvasElement.id = "canvas" // Set id as canvas
-  canvasElement.width = 500 // Set canvas width
-  canvasElement.height = 500 // Set canvas height
-  document.body.appendChild(canvasElement) // Add the canvas to the DOM
-
-  // Initialize the Fabric.js canvas
-  const canvas = new fabric.Canvas("canvas")
-
-  // Parse and add the drawing objects from the placeholderDrawing
-  placeholderDrawing.objects.forEach((obj) => {
-    if (obj.type === "line") {
-      const line = new fabric.Line([obj.x1, obj.y1, obj.x2, obj.y2], {
-        left: obj.left,
-        top: obj.top,
-        fill: obj.fill,
-        stroke: obj.stroke,
-        strokeWidth: obj.strokeWidth,
-        angle: obj.angle,
-        opacity: obj.opacity,
-        scaleX: obj.scaleX,
-        scaleY: obj.scaleY,
-        flipX: obj.flipX,
-        flipY: obj.flipY,
-      })
-      canvas.add(line)
-    }
-  })
-
-  // After adding objects, convert the canvas to a PNG image in base64
-  const base64Png = canvas.toDataURL({
-    format: "png",
-    quality: 1,
-  })
-
-  console.log(base64Png) // This will log the Base64 PNG string
-
-  // Clean up the canvas after use
-  //document.body.removeChild(canvasElement) // Optionally remove the canvas after use
-
-  return base64Png
-}
-
-// Call the function and get the Base64 PNG
-// createTemporaryCanvasAndConvert()
+//import placeholderDrawing from "./public/placeholderImage"
 
 export const handleGeneratePDF = async (
   e,
@@ -76,9 +27,7 @@ export const handleGeneratePDF = async (
           .answer { margin-top: 10px; white-space: pre-wrap; }
           .manylines-text-quest { height: 200px; overflow: hidden; }
           .graphing-quest { margin-top: 10px; }
-          .graphing-quest img { width: 150px; height: 150px; } /* Adjust the size of the embedded graph */
-          .ref-info-img img { width: 100%; height: 50%; } /* Adjust the size of the embedded graph */
-          .ref-name { margin-bottom: 20px; }
+          .graphing-quest img { width: 200px; height: 175px; } /* Adjust the size of the embedded graph */
         </style>
       </head>
       <body>
@@ -87,17 +36,6 @@ export const handleGeneratePDF = async (
   `
 
   userInputData.forEach((question, index) => {
-    let refName = `<strong>${question.Ref[3]} </strong> `
-    let imgSrc = process.env.PUBLIC_URL + "/" + question.Ref[1]
-    if (refName) {
-      htmlContent += `<div style="font-size: 24px; font-weight: bold;">
-        ${refName}
-      </div>
-      `
-    }
-    if (imgSrc) {
-      htmlContent += `<div class="ref-info-img "><img src="${imgSrc}" alt="info" /></div>`
-    }
     htmlContent += `
       <div class="question">
         <p>${index + 1}. ${question.question}</p>
@@ -118,6 +56,7 @@ export const handleGeneratePDF = async (
       } else if (answerText.length > 1000) {
         answerText = answerText.substring(0, 1000) + "..."
       }
+
       htmlContent += `<div class="answer manylines-text-quest">${answerText}</div>`
     } else if (question.qtype === "graphing-quest") {
       const combinedCanvasImage = localStorage.getItem(
@@ -127,9 +66,7 @@ export const handleGeneratePDF = async (
       if (combinedCanvasImage) {
         htmlContent += `<div class="answer graphing-quest"><img src="${combinedCanvasImage}" alt="Graphing Answer" /></div>`
       } else {
-        // Convert placeholderDrawing to an image
-        const placeholderImage = createTemporaryCanvasAndConvert()
-        htmlContent += `<div class="answer graphing-quest"><img src="${placeholderImage}" alt="Graphing Answer" /></div>`
+        htmlContent += `<div class="answer graphing-quest"><canvas></canvas></div>`
       }
     } else {
       htmlContent += `<div class="answer"> <strong>Answer:</strong> ${question["user-answer"]}</div>`
@@ -149,11 +86,11 @@ export const handleGeneratePDF = async (
 
     // Convert HTML to PDF
     const opt = {
-      margin: 1,
+      margin: [1, 1, 0.5, 1], // top, right, bottom, left margins in inches
       filename: `MyPdfReport4${quizName}.pdf`,
       image: { type: "jpeg", quality: 0.98 },
       html2canvas: { scale: 2 },
-      jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+      jsPDF: { unit: "in", format: "A4", orientation: "portrait" },
     }
 
     html2pdf().from(htmlContent).set(opt).save()

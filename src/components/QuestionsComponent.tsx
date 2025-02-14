@@ -2,52 +2,70 @@ import React, { useState, useEffect } from "react"
 import DrawingApp from "./canvas/DrawingApp"
 //import { handleJsonSave, handleGeneratePDF } from "./utils";
 import { handleGeneratePDF } from "./utils"
-import { quiz } from "../pages/pset1/data"
 //import { fabric } from "fabric";
 //import { useCanvasStore } from "./canvas/useCanvasStore"
+import { saveAs } from "file-saver"
 
 interface QuizProps {
   questions: {
     qtype: string
     question: string
-    options?: string[] //answers: string[];
-    Ref: string
+    options?: string[] | number[] //answers: string[];
+    Ref: string | string[]
   }[]
   userId: string | undefined
   quizName: string
 }
 
 const QuestionsComponent = ({ questions, userId, quizName }: QuizProps) => {
-  const [storageSize, setStorageSize] = useState<number | null>(null)
-  // Function to calculate the size of data stored in localStorage
-  const getLocalStorageSize = () => {
-    let totalSize = 0
-    for (let key in localStorage) {
-      if (localStorage.hasOwnProperty(key)) {
-        const item = localStorage.getItem(key)
-        if (item) {
-          totalSize += (item.length + key.length) * 2 // Size in bytes
-        }
-      }
-    }
-    setStorageSize(totalSize) // Update state with the calculated size
-  }
   //const [userAnswers, setUserAnswers] = useState<{    [key: number]: string | number;   }>({});
   const [userAnswers, setUserAnswers] = useState<{
     [key: number]: string | number
   }>({})
+
+  // storing the userAnswers in the L-storage and also the empty initial values of drawing values for graphing questions in the L-storage
   useEffect(() => {
     const storedAnswers = localStorage.getItem("userAnswers")
     if (storedAnswers) {
       setUserAnswers(JSON.parse(storedAnswers))
     }
+
+    // Initialize empty drawing values for graphing questions if not already stored
+    questions.forEach((question, index) => {
+      if (question.qtype === "graphing-quest") {
+        const drawingKey = `${quizName}-canvasDrawing-${index}`
+        if (!localStorage.getItem(drawingKey)) {
+          const initialDrawing = { objects: [], background: "" }
+          localStorage.setItem(drawingKey, JSON.stringify(initialDrawing))
+        }
+      }
+    })
   }, [])
+
+  // // one time saving the drawing values to a file
+  // useEffect(() => {
+  //   const drawingKey = `${quizName}-canvasDrawing-0`
+  //   const drawing = localStorage.getItem(drawingKey)
+
+  //   if (drawing) {
+  //     const blob = new Blob([`const drawing = ${drawing};`], {
+  //       type: "application/javascript",
+  //     })
+  //     saveAs(blob, `${drawingKey}.js`)
+  //     console.log(`File saved as ${drawingKey}.js`)
+  //   } else {
+  //     console.error(
+  //       `Failed to retrieve drawing from localStorage with key ${drawingKey}`
+  //     )
+  //   }
+  // }, [quizName])
+
   console.log("userAnswers", userAnswers)
   const [fullname, setFullname] = useState("")
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
   console.log("currentQuestionIndex", currentQuestionIndex)
   const [showResults, setShowResults] = useState(false)
-
+  const [nextButtonClicked, setNextButtonClicked] = useState(false)
   //const currentState = useCanvasStore((state: any) => state.currentState) // get it from store
 
   const saveCanvasImage2storage = async (index: number) => {
@@ -87,7 +105,7 @@ const QuestionsComponent = ({ questions, userId, quizName }: QuizProps) => {
     tempCtx.drawImage(mainCanvas, 0, 0, tempCanvas.width, tempCanvas.height)
 
     const dataURL = tempCanvas.toDataURL("image/png")
-    localStorage.setItem(`canvasImage-${index}`, dataURL)
+    localStorage.setItem(`${quizName}-canvasImage-${index}`, dataURL)
   }
 
   const handleInputChange = (questionId: any, value: any) => {
@@ -98,6 +116,10 @@ const QuestionsComponent = ({ questions, userId, quizName }: QuizProps) => {
   }
 
   const handleNext = async () => {
+    setNextButtonClicked(true) // Set nextButtonClicked to true
+    console.log(
+      `value of nextButtonClicked in QuestionsComp.tsx is:' ${nextButtonClicked}`
+    )
     //console.log("currentState of canvas located in Qcomp.tsx : ", currentState) // this a state define here but fetched from store
     localStorage.setItem("userAnswers", JSON.stringify(userAnswers))
 
@@ -106,6 +128,11 @@ const QuestionsComponent = ({ questions, userId, quizName }: QuizProps) => {
     }
 
     //if (showResults) return; // Prevent further updates after showing results ()
+    if (currentQuestionIndex === questions.length - 2) {
+      alert(
+        "Please don't forget to download the PDF and submit it to gradescope after you do the last question. Finishing the assessment may save your work temporarly to your browser but it doesn't submit it to the server where the instructor has access."
+      )
+    }
     if (currentQuestionIndex !== questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1)
     } else {
@@ -147,10 +174,6 @@ const QuestionsComponent = ({ questions, userId, quizName }: QuizProps) => {
     if (currentQuestionIndex > 0) {
       setCurrentQuestionIndex(currentQuestionIndex - 1)
     }
-  }
-
-  const startquiz = () => {
-    setCurrentQuestionIndex(1)
   }
 
   return (
@@ -208,38 +231,61 @@ const QuestionsComponent = ({ questions, userId, quizName }: QuizProps) => {
                     : "Download PDF File"}
                 </button>
               </div>
-              {/* Local starage  */}
-              {/* <div>
-                <button onClick={getLocalStorageSize}>
-                  Check LocalStorage Size
-                </button>
-                {storageSize !== null && (
-                  <p>Total localStorage size: {storageSize} bytes</p>
-                )}
-              </div> */}
               {/* Displaying only the current question */}
               <div style={{ marginBottom: "20px" }}>
                 <div style={{ marginBottom: "20px" }}>
                   {questions &&
                     questions.length > 0 &&
                     currentQuestionIndex >= 0 &&
-                    questions[currentQuestionIndex].Ref && (
-                      <img
-                        src={
-                          process.env.PUBLIC_URL +
-                          "/" +
-                          questions[currentQuestionIndex].Ref
-                        }
-                        alt="Question Reference"
-                        style={{ maxWidth: "50%", marginTop: "10px" }}
-                      />
+                    questions[currentQuestionIndex].Ref.length > 0 && (
+                      <>
+                        <div style={{ fontSize: "24px", fontWeight: "bold" }}>
+                          {`${questions[currentQuestionIndex].Ref[3]}`}
+                        </div>
+                        {questions[currentQuestionIndex].Ref[0] === "img" && (
+                          <img
+                            src={
+                              process.env.PUBLIC_URL +
+                              "/" +
+                              questions[currentQuestionIndex].Ref[1]
+                            }
+                            alt="Question Reference"
+                            style={{ maxWidth: "75%", marginTop: "10px" }}
+                          />
+                        )}
+                        {questions[currentQuestionIndex].Ref[0] ===
+                          "url_link" && (
+                          <>
+                            <div>
+                              {questions[currentQuestionIndex].Ref[2] && (
+                                <span>
+                                  {questions[currentQuestionIndex].Ref[2]}&nbsp;
+                                </span>
+                              )}
+                              <a
+                                href={questions[currentQuestionIndex].Ref[1]}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                {questions[currentQuestionIndex].Ref[1]}
+                              </a>
+                            </div>
+                          </>
+                        )}
+                      </>
                     )}
-                  <br></br>{" "}
+                  <br />
                   {currentQuestionIndex < questions.length && (
-                    <label>
-                      {currentQuestionIndex + 1}.{" "}
-                      {questions[currentQuestionIndex].question}
-                    </label>
+                    <div style={{ marginTop: "20px" }}>
+                      <label
+                        style={{
+                          fontSize: "27px",
+                        }}
+                      >
+                        {currentQuestionIndex + 1}.{" "}
+                        {questions[currentQuestionIndex].question}
+                      </label>
+                    </div>
                   )}
                 </div>
 
@@ -305,7 +351,7 @@ const QuestionsComponent = ({ questions, userId, quizName }: QuizProps) => {
                       maxLength={1000}
                       style={{
                         width: "96%",
-                        height: "100px",
+                        height: "300px",
                         fontSize: "20px",
                       }}
                       onChange={(e) =>
@@ -322,7 +368,17 @@ const QuestionsComponent = ({ questions, userId, quizName }: QuizProps) => {
                       marginBottom: "500px",
                     }}
                   >
-                    <DrawingApp index={currentQuestionIndex} />
+                    <DrawingApp
+                      index={currentQuestionIndex}
+                      AssessName={quizName || ""}
+                      canvasWidth={Number(
+                        questions[currentQuestionIndex].options?.[0] || 500
+                      )}
+                      canvasHeight={Number(
+                        questions[currentQuestionIndex].options?.[1] || 400
+                      )}
+                      nextButtonClicked={nextButtonClicked}
+                    />
                   </div>
                 )}
               </div>
@@ -354,7 +410,7 @@ const QuestionsComponent = ({ questions, userId, quizName }: QuizProps) => {
                   style={{ marginRight: "200px" }} // Add margin to the left of the Next button
                 >
                   {currentQuestionIndex === questions.length - 1
-                    ? "Finish Quiz"
+                    ? "Finish Assessment"
                     : "Next Question →"}
                 </button>
 
