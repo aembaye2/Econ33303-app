@@ -279,7 +279,7 @@ const QuestionsComponent = ({ questions, userId, quizName }: QuizProps) => {
                     <div style={{ marginTop: "20px" }}>
                       <label
                         style={{
-                          fontSize: "27px",
+                          fontSize: "20px",
                         }}
                       >
                         {currentQuestionIndex + 1}.{" "}
@@ -351,7 +351,7 @@ const QuestionsComponent = ({ questions, userId, quizName }: QuizProps) => {
                       maxLength={1000}
                       style={{
                         width: "96%",
-                        height: "300px",
+                        height: "200px",
                         fontSize: "20px",
                       }}
                       onChange={(e) =>

@@ -87,7 +87,7 @@ export const handleGeneratePDF = async (
   `
 
   userInputData.forEach((question, index) => {
-    let refName = `<strong>${question.Ref[3]} </strong> `
+    let refName = question.Ref[3]
     let imgSrc = process.env.PUBLIC_URL + "/" + question.Ref[1]
     if (refName) {
       htmlContent += `<div style="font-size: 24px; font-weight: bold;">
