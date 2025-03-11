@@ -13,8 +13,8 @@ const Home = () => {
       }}
     >
       <h1>
-        Welcome to Econ to Econ 33303! Navigate to the Assessment you want or
-        should access.
+        Welcome to Econ 33303! Navigate to the Assessment you want or should
+        access.
       </h1>
     </div>
   )
