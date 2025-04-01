@@ -12,6 +12,7 @@ interface QuizProps {
     question: string
     options?: string[]
     Ref: string | string[]
+    numlist?: number[]
   }[]
   userId: string | undefined
   quizName: string
@@ -312,9 +313,16 @@ const QuestionsComponent = ({ questions, userId, quizName }: QuizProps) => {
                     <DrawingApp
                       index={currentQuestionIndex}
                       AssessName={quizName || ""}
-                      canvasWidth={600}
-                      canvasHeight={450}
+                      canvasWidth={
+                        questions[currentQuestionIndex].numlist?.[0] || 500
+                      }
+                      canvasHeight={
+                        questions[currentQuestionIndex].numlist?.[1] || 400
+                      }
                       nextButtonClicked={nextButtonClicked}
+                      bgnumber={
+                        questions[currentQuestionIndex].numlist?.[2] || 0
+                      }
                       modes={filteredModes}
                     />
                   </div>

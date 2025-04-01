@@ -10,6 +10,7 @@ import Home from "./pages"
 import Pset1 from "./pages/pset1/Pset1"
 import Pset2 from "./pages/pset2/Pset2"
 import Pset3 from "./pages/pset3/Pset3"
+import Pset4 from "./pages/pset4/Pset4"
 import Act00 from "./pages/act00/Act00"
 import Act01 from "./pages/act01/Act01"
 import ActCh05 from "./pages/actCh05/ActCh05"
@@ -25,6 +26,7 @@ function App() {
             <Route path="/Pset1" element={<Pset1 />} />
             <Route path="/Pset2" element={<Pset2 />} />
             <Route path="/Pset3" element={<Pset3 />} />
+            <Route path="/Pset4" element={<Pset4 />} />
             <Route path="/Act00" element={<Act00 />} />
             <Route path="/Act01" element={<Act01 />} />
             <Route path="/ActCh05" element={<ActCh05 />} />
