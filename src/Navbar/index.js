@@ -19,6 +19,7 @@ const Navbar = () => {
           {/* <NavLink to="/Pset2">Problem Set 2</NavLink> */}
           {/* <NavLink to="/Pset3">Problem Set 3</NavLink> */}
           <NavLink to="/Pset4">Problem Set 4</NavLink>
+          {/* <NavLink to="/E2">E2</NavLink> */}
         </NavMenu>
       </Nav>
     </>

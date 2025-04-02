@@ -15,7 +15,7 @@ export const quiz = {
         "singlearrowhead",
       ],
       Ref: ["link", "", "", "Reference 1: Taxes and Labor Supply"],
-      numlist: [500, 400, 0],
+      numlist: [800, 450, 0],
     },
     {
       qtype: "graphing-quest",
@@ -52,7 +52,7 @@ export const quiz = {
     {
       qtype: "manylines-text-quest",
       question:
-        "Interpret the coefficient on after-tax wages. What does this coefficient imply about the effect of increasing wages from $6 to $10 per hour on labor supply? <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> ",
+        "Interpret the coefficient on after-tax wages. What does this coefficient imply about the effect of increasing wages from $6 to $10 per hour on labor supply?",
       Ref: [
         "img",
         "pset4_img01.png",
