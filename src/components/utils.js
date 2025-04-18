@@ -76,7 +76,7 @@ export const handleGeneratePDF = async (
           .answer { margin-top: 10px; white-space: pre-wrap; }
           .manylines-text-quest { height: 200px; overflow: hidden; }
           .graphing-quest { margin-top: 10px; }
-          .graphing-quest img { width: 200px; height: 150px; } /* Adjust the size of the embedded graph */
+          .graphing-quest img { width: 250px; height: 200px; } /* Adjust the size of the embedded graph */
           .ref-info-img img { width: 100%; height: 50%; } /* Adjust the size of the embedded graph */
           .ref-name { margin-bottom: 20px; }
         </style>

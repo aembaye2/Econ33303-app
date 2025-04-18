@@ -10,9 +10,9 @@ export const quiz = {
         "point",
         "curve4pts",
         "coordinate",
-
         "text",
         "singlearrowhead",
+        "doublearrowhead",
       ],
       Ref: ["link", "", "", "Reference 1: Taxes and Labor Supply"],
       numlist: [500, 400, 0],
@@ -24,11 +24,11 @@ export const quiz = {
       options: [
         "line",
         "point",
-        "rectangle",
+        "curve4pts",
         "coordinate",
-
         "text",
         "singlearrowhead",
+        "doublearrowhead",
       ],
       Ref: ["link", "", "", "Reference 1: Taxes and Labor Supply"],
       numlist: [500, 400, 0],
@@ -40,11 +40,11 @@ export const quiz = {
       options: [
         "line",
         "point",
-        "rectangle",
+        "curve4pts",
         "coordinate",
-
         "text",
         "singlearrowhead",
+        "doublearrowhead",
       ],
       Ref: ["link", "", "", "Reference 1: Taxes and Labor Supply"],
       numlist: [500, 400, 0],
@@ -75,15 +75,15 @@ export const quiz = {
     {
       qtype: "graphing-quest",
       question:
-        "Suppose that a person lives for two periods, earning $30,000 in labor income in period 1,during which she consumes or saves for period 2. What is saved earns interest of 10% per year. Draw that person’s intertemporal budget constraint in a world of no taxes (BC1) and then a new budget constraint in a world in which the government taxes interest income at the rate of 30%  (BC2) and then in a world in which period 1 labor income is taxed at 30% (BC3).",
+        "Suppose that a person lives for two periods, earning $30,000 in labor income in period 1,during which she consumes or saves for period 2. What is saved earns interest of 10% per year. Draw that person’s intertemporal budget constraint in a world of no taxes (BC1) and then a new budget constraint in a world in which the government taxes interest income at the rate of 30%  (BC2) and then in a world in which period 1 labor income is taxed at 30% (BC3). <br> <br> <br><br><br><br><br>",
       options: [
         "line",
         "point",
-        "rectangle",
+        "curve4pts",
         "coordinate",
-
         "text",
         "singlearrowhead",
+        "doublearrowhead",
       ],
       Ref: ["link", "", "", "Reference 1: Taxes and Labor Supply"],
       numlist: [500, 400, 0],
@@ -95,11 +95,11 @@ export const quiz = {
       options: [
         "line",
         "point",
-        "rectangle",
+        "curve4pts",
         "coordinate",
-
         "text",
         "singlearrowhead",
+        "doublearrowhead",
       ],
       Ref: ["link", "", "", "Reference 1: Taxes and Labor Supply"],
       numlist: [500, 400, 0],
@@ -109,15 +109,15 @@ export const quiz = {
     {
       qtype: "graphing-quest",
       question:
-        "Similar to the previous question, show the effect of tax on labor income on the intertemporal choice of the individual by comparing the optimal points with and without the tax on labor income. Make sure that you draw the two budget constraints and the corresponding two indifference curves. ",
+        "Similar to the previous question, show the effect of tax on labor income on the intertemporal choice of the individual by comparing the optimal points with and without the tax on labor income. Make sure that you draw the two budget constraints and the corresponding two indifference curves. <br><br> <br> <br> <br> <br> <br>",
       options: [
         "line",
         "point",
-        "rectangle",
+        "curve4pts",
         "coordinate",
-
         "text",
         "singlearrowhead",
+        "doublearrowhead",
       ],
       Ref: ["link", "", "", "Reference 1: Taxes and Labor Supply"],
       numlist: [500, 400, 0],

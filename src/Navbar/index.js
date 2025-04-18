@@ -18,7 +18,8 @@ const Navbar = () => {
           {/* <NavLink to="/Hw01">Homework 1</NavLink> */}
           {/* <NavLink to="/Pset2">Problem Set 2</NavLink> */}
           {/* <NavLink to="/Pset3">Problem Set 3</NavLink> */}
-          <NavLink to="/Pset4">Problem Set 4</NavLink>
+          {/* <NavLink to="/Pset4">Problem Set 4</NavLink> */}
+          <NavLink to="/Pset5">Problem Set 5</NavLink>
           {/* <NavLink to="/E2">E2</NavLink> */}
         </NavMenu>
       </Nav>
